@@ -1,0 +1,66 @@
+body {
+    min-width: 1200px;
+}
+
+/* Fixed Heading / Footer */
+#mainNav, #searchBar, #footer {
+    width: 100%;
+    position: fixed;
+}
+
+#mainNav {
+    background-color: rgb(99, 5, 2);
+    padding: 10px;
+    top: 0%;
+    height: 30px;
+}
+
+#mainNav >div >ul >li > a {
+    color: #d0d0d0;
+}
+
+#mainNav >div >ul >li > a:hover {
+    color: white;
+}
+
+#searchBar {
+    top: 30px;
+    height: 51px;
+    left: 0px;
+    right: 0px;
+    background-color: white;
+}
+
+#searchBar >  label, input, select {
+    margin-inline-start: 5px;
+    margin-inline-end: 5px;
+}
+
+#footer {
+    height: 25px;
+    bottom: 0px;
+    background-color: grey;
+}
+
+/* Search Table Results */
+#searchResults {
+    margin-top: 80px;
+    overflow-y: auto;
+    bottom: 2.5%;
+}
+#searchResults thead th{
+    position: sticky;
+    top: 80px;
+}
+
+table {
+    border-collapse: collapse;
+}
+tbody {
+    margin-top: 10%;
+}
+th {background: white;}
+
+
+
+
