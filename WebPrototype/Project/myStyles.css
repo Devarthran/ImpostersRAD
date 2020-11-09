@@ -111,6 +111,8 @@ body {
 }
 
 .main table {
+    min-width: 1080px;
+    overflow-x: auto;
     table-layout: fixed;
     overflow-y: auto;
 }
