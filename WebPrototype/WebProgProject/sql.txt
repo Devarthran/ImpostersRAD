@@ -1,32 +1,32 @@
 ###delete database if exists###
-DROP DATABASE IF EXISTS movies;
+DROP DATABASE IF EXISTS smt_db;
 
 ###create a fresh database###
-CREATE DATABASE movies;
+CREATE DATABASE smt_db;
 
 ###select the database just created###
-USE movies;
+USE smt_db;
 
 ###create table###
-CREATE TABLE movies_table (
-    MovieID int NOT NULL AUTO_INCREMENT,
+CREATE TABLE movies (
+    ID int NOT NULL AUTO_INCREMENT,
     Title VARCHAR(255),
     Studio VARCHAR(255),
     Status VARCHAR(255),
     Sound VARCHAR(255),
     Versions VARCHAR(255),
-    Price DECIMAL(5,2),
+    RecRetPrice DECIMAL(5,2),
     Rating VARCHAR(255),
     Year int(4),
     Genre VARCHAR(255),
     Aspect VARCHAR(255),
-    Statistic int(8),
-    PRIMARY KEY (MovieID)
+    num_searched int(8),
+    PRIMARY KEY (ID)
 );
 
 ###insert records###
-INSERT INTO movies_table
-    (Title, Studio, Status, Sound, Versions, Price, Rating, Year, Genre, Aspect, Statistic)
+INSERT INTO movies
+    (Title, Studio, Status, Sound, Versions, RecRetPrice, Rating, Year, Genre, Aspect, num_searched)
 VALUES
 ("10", "Warner Brothers", "Out", "1.0", "4:3, LBX, 16:9", 19.98, "R", 1979, "Comedy", "2.35:1", 10),
 ("12 Monkeys (DTS)", "Universal", "Out", "DTS", "LBX, 16:9", 34.98, "R", 1995, "SciFi", "1.85:1", 4723),
