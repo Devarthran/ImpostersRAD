@@ -14,19 +14,6 @@ body {
     min-width: 1080px;
 }
 
-@media (max-width: 1199px) {
-    .form-inline input {
-        margin: 10px 0;
-        width: 100%;
-    }
-
-    .form-inline {
-        max-width: 500px;
-        display: inline-block;
-        vertical-align: left;
-    }
-}
-
 #chart {
     width: 70%;
     display: block;
@@ -104,4 +91,39 @@ th {
 #topResults thead th {
     position: sticky;
     top: 29px;
+}
+
+@media (max-width: 1199px) {
+
+    .form-inline input {
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    .form-inline {
+        float: left;
+        height: auto;
+        position: relative;
+        z-index: 1;
+        overflow-x: hidden;
+        padding: 8px 0;
+        display: block;
+        width: 500px;
+        margin-top: 20px;
+        width: 200px;
+    }
+
+    #searchResults {
+        padding: 0px 10px;
+        position: relative;
+        margin-top: 20px;
+        overflow-y: auto;
+        bottom: 2.5%;
+        margin-left: 550px;
+    }
+
+    #searchResults thead th {
+        position: relative;
+        margin-top: 0;
+    }
 }
