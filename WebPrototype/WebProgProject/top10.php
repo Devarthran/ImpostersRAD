@@ -25,7 +25,7 @@
     require_once $nav;
     ?>
     <!-- Movie Results Table from Database -->
-    <table id="searchResults" class="table container">
+    <table id="topResults" class="table container">
         <thead id="resultsHead">
             <th>Title</th>
             <th>Studio</th>
@@ -201,8 +201,6 @@
     imagepng($chart, "statistic.png", 9);
     imagedestroy($chart);
     echo "<img id='chart' src='statistic.png'>";
-    echo '<br><br>';
-
     ?>
 
     <!-- Includes footer -->

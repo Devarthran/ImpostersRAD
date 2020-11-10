@@ -8,15 +8,31 @@ body {
 #footer {
     width: 100%;
     position: fixed;
-    overflow-x: auto;
-    overflow-y: auto;
 }
 
-#chart{
+#searchBar {
+    min-width: 1080px;
+}
+
+@media (max-width: 1199px) {
+    .form-inline input {
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    .form-inline {
+        max-width: 500px;
+        display: inline-block;
+        vertical-align: left;
+    }
+}
+
+#chart {
     width: 70%;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 10px;
 }
 
 #mainNav {
@@ -77,4 +93,15 @@ tbody {
 
 th {
     background: white;
+}
+
+#topResults {
+    margin-top: 29px;
+    overflow-y: auto;
+    bottom: 2.5%;
+}
+
+#topResults thead th {
+    position: sticky;
+    top: 29px;
 }
