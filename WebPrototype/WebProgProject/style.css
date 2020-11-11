@@ -23,10 +23,12 @@ body {
 }
 
 #mainNav {
+    z-index: 10;
     background-color: rgb(99, 5, 2);
     padding: 10px;
     top: 0%;
     height: 30px;
+    position: fixed;
 }
 
 #mainNav>div>ul>li>a {
@@ -38,6 +40,7 @@ body {
 }
 
 #searchBar {
+    z-index: 10;
     top: 30px;
     height: 51px;
     left: 0px;
@@ -53,6 +56,7 @@ select {
 }
 
 #footer {
+    z-index: 10;
     height: 25px;
     bottom: 0px;
     background-color: grey;
@@ -60,6 +64,7 @@ select {
 
 /* Search Table Results */
 #searchResults {
+    z-index: 0;
     margin-top: 80px;
     overflow-y: auto;
     bottom: 2.5%;
@@ -98,32 +103,33 @@ th {
     .form-inline input {
         margin: 10px 0;
         width: 100%;
+        z-index: 1;
     }
 
     .form-inline {
-        float: left;
-        height: auto;
-        position: relative;
-        z-index: 1;
+        align-items: left;
+        height: 100vh;
+        position: sticky;
         overflow-x: hidden;
+        z-index: 1;
+        background: white;
         padding: 8px 0;
         display: block;
-        width: 500px;
-        margin-top: 20px;
+        margin-top: 30px;
         width: 200px;
     }
 
     #searchResults {
+        align-items: right;
         padding: 0px 10px;
-        position: relative;
         margin-top: 20px;
         overflow-y: auto;
         bottom: 2.5%;
-        margin-left: 550px;
+        margin-left: 250px;
     }
 
     #searchResults thead th {
-        position: relative;
-        margin-top: 0;
+        position: sticky;
+        top: 40px;
     }
 }

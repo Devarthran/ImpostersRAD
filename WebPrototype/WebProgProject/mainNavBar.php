@@ -1,4 +1,4 @@
-<nav id="mainNav" class="navbar navbar-expand-sm navbar-dark">
+<nav id="mainNav" class="navbar navbar-expand-sm navbar-dark container-fluid">
     <a class="navbar-brand" href="index.php">SMT Movie Rental</a>
     <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
         aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"></button>

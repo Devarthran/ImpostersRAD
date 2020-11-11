@@ -67,7 +67,7 @@ if (window.history.replaceState) {
     ?>
 
     <!-- Search Bar Form-->
-    <div id="searchBar" class="container">
+    <div id="searchBar" class="container-lg">
         <form id="SearchForm" class="form-inline" action="<?php echo basename($_SERVER['PHP_SELF']); ?>" method="POST">
             <div class="form-group">
                 <label id="lbltitle" for="title">Title: </label>
