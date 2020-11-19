@@ -1,0 +1,17 @@
+/* Signup form */
+.signup-form-title {
+    font-size: 3rem;
+    padding: 1rem 0rem 1rem;
+}
+
+.signup-form input[type='text'],
+.signup-form input[type='email'],
+.signup-form input[type='submit'] {
+    min-width: 300px;
+    width: 50%;
+    vertical-align: middle;
+    margin: 5px 10px 5px 10px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}

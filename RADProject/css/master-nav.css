@@ -1,0 +1,51 @@
+/* Master Navbar */
+.master-nav-wrapper {
+    height: 30px;
+}
+
+.master-nav {
+    position: fixed;
+    min-width: 300px;
+    width: 100vw;
+    margin: 0;
+    padding: 5px 0px 5px;
+    top: 0;
+    z-index: 10;
+
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+
+    text-decoration: none;
+    background-color: rgb(99, 5, 2);
+    color: white;
+}
+
+.master-nav .brand {
+    flex-grow: 1;
+    padding: 0 10px;
+    text-decoration: inherit;
+    color: inherit;
+    font-size: 20px;
+}
+
+.nav-links {
+    text-decoration: none;
+    color: white;
+    white-space: nowrap;
+}
+
+.nav-links li {
+    display: inline-flex;
+}
+
+
+.nav-links >li>a {
+    padding-right: 5px;
+    text-decoration: inherit;
+    color: inherit;
+}
+
+.nav-links >li>a:hover {
+    background-color: rgb(58, 3, 1);
+}
