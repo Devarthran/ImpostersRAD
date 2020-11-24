@@ -2,6 +2,16 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+CREATE TABLE `admins` (
+  `adminId` int(11) NOT NULL,
+  `adminName` varchar(128) NOT NULL,
+  `adminEmail` varchar(128) NOT NULL,
+  `adminPassword` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `admins` (`adminId`, `adminName`, `adminEmail`, `adminPassword`) VALUES
+(1, 'Admin', 'Admin@AE.com', '$2y$10$f769nbC2fH8SJKg.1bOebuk8zeOnouqzlY/orU/DWQ8fZIdAat/Mi');
+
 CREATE TABLE `movies` (
   `ID` int(11) NOT NULL,
   `Title` varchar(255) DEFAULT NULL,
@@ -18,7 +28,7 @@ CREATE TABLE `movies` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `movies` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, `RecRetPrice`, `Rating`, `Year`, `Genre`, `Aspect`, `num_searched`) VALUES
-(1, '10', 'Warner Brothers', 'Out', '1.0', '4:3, LBX, 16:9', '19.98', 'R', 1979, 'Comedy', '2.35:1', 62),
+(1, '10', 'Warner Brothers', 'Out', '1.0', '4:3, LBX, 16:9', '19.98', 'R', 1979, 'Comedy', '2.35:1', 54),
 (2, '12 Monkeys (DTS)', 'Universal', 'Out', 'DTS', 'LBX, 16:9', '34.98', 'R', 1995, 'SciFi', '1.85:1', 4723),
 (3, '12 Monkeys: Collector\'s Edition', 'Universal', 'Cancelled', '5.1', 'LBX, 16:9', '29.98', 'R', 1995, 'Drama', '1.85:1', 5703),
 (4, '187: Special Edition', 'Warner Brothers', 'Out', '5.1', 'LBX, 16:9', '24.98', 'R', 1997, 'Mystery  /  Suspense', '1.85:1', 3559),
@@ -2322,18 +2332,6 @@ INSERT INTO `movies` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, `R
 (2297, 'Gone with Sunny', 'Panasonic', 'Dis-continued', 'ACS', '1.1', '29.00', 'PG', 2003, 'Dance / Ballet', '1', 2008),
 (2298, 'Matrix 2', 'Warner Brothers', 'TBA', '3.0', '3.1', '35.90', 'PG-13', 2004, 'Action / Adventure', '1.2.3', 4907);
 
-CREATE TABLE `staff` (
-  `staffId` int(11) NOT NULL,
-  `staffName` varchar(128) NOT NULL,
-  `staffEmail` varchar(128) NOT NULL,
-  `staffPassword` varchar(128) NOT NULL,
-  `access_level` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO `staff` (`staffId`, `staffName`, `staffEmail`, `staffPassword`, `access_level`) VALUES
-(1, 'Admin', 'Admin@AE.com', '$2y$10$f769nbC2fH8SJKg.1bOebuk8zeOnouqzlY/orU/DWQ8fZIdAat/Mi', 1),
-(6, 'Dan', 'fake@mail.com', '$2y$10$lA9R6/pwkzI1tzpBhT4OaeTXLtFIFeYo5a6/Zt1VmDYEIFt8MKwS.', 2);
-
 CREATE TABLE `users` (
   `usersId` int(11) NOT NULL,
   `usersName` varchar(128) NOT NULL,
@@ -2345,26 +2343,25 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `users` (`usersId`, `usersName`, `usersEmail`, `usersNewsletter`, `usersNotifications`, `verify_code`, `is_verified`) VALUES
-(30, 'Test', 'test@mail.com', b'1', b'1', '$2y$10$Tt0X6E8w1JeQXlHQnaslQ.tyAZ0calqUANH5mHxPFaxi6wZ48yUbq', b'0'),
-(31, 'test sub', 't@m.com', b'0', b'1', '$2y$10$.BLA//GeIncTB3FZAN4GS.0o1tv.fsiSGforIsYkimVOyQ.LH1nx.', b'0');
+(2, 'Daniel Ewen', 'Daniel.j.ewen@gmail.com', b'1', b'1', '$2y$10$veFDXI2q1PuwNFVA7I7/quBxboXprR7CCbPmZLombn3bkSSXMtXrq', b'0');
 
+
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`adminId`);
 
 ALTER TABLE `movies`
   ADD PRIMARY KEY (`ID`);
-
-ALTER TABLE `staff`
-  ADD PRIMARY KEY (`staffId`);
 
 ALTER TABLE `users`
   ADD PRIMARY KEY (`usersId`);
 
 
+ALTER TABLE `admins`
+  MODIFY `adminId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 ALTER TABLE `movies`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2299;
 
-ALTER TABLE `staff`
-  MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 ALTER TABLE `users`
-  MODIFY `usersId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `usersId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;

@@ -12,9 +12,9 @@ if (isset($_POST['loginbtn'])) {
         exit();
     }
 
-    login($conn, $email, $password);
+    loginAdmin($conn, $email, $password);
 }
 else {
-    echo 'Failed to log in.';
+    header('location:../login.php');
     exit();
 }

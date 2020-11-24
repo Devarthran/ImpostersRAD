@@ -39,6 +39,31 @@ function invalidEmail($email) {
     else { return false; }
 }
 
+
+
+
+
+function createAdmin($conn, $name, $email, $password) {
+    $sql = "INSERT INTO admins (adminName, adminEmail, adminPassword) 
+            VALUES (?, ?, ?);";
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location:../login.php?error=loginfailure");
+        exit();
+    }
+
+    $hashedPass = password_hash($password, PASSWORD_DEFAULT);
+
+
+    mysqli_stmt_bind_param($stmt, 'ssss', $name, $email, $password);
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+    header("location:../login.php?message=admincreated");
+    exit();
+}
+
 // Login Page Functions
 function emptyInputLogin($email, $password) {
     if (empty($email) || empty($password)) {
@@ -47,12 +72,12 @@ function emptyInputLogin($email, $password) {
     else { return false; }
 }
 
-function staffExists($conn, $email) {
-    $sql = "SELECT * FROM staff WHERE staffEmail = ?;";
+function adminExists($conn, $email) {
+    $sql = "SELECT * FROM admins WHERE adminEmail = ?;";
     $stmt = mysqli_stmt_init($conn);
 
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        echo 'Statement Error!';
+        header("location:../signup.php?error=stmtfailure");
         exit();
     }
 
@@ -71,25 +96,26 @@ function staffExists($conn, $email) {
     mysqli_stmt_close($stmt);
 }
 
-function login($conn, $email, $password) {
-    if (!($account = staffExists($conn, $email))) {
-        echo 'Account doesn\'t exist.';
-        exit();
-    } else {
-        $passHashed = $account['staffPassword'];
-        $checkPass = password_verify($password, $passHashed);
+function loginAdmin($conn, $email, $password) {
+    $adminExists = adminExists($conn, $email);
 
-        if ($checkPass === false) {
-            echo 'Password failed.';
-            exit();
-        }
-        else if ($checkPass === true) {
-            session_start();
-            $_SESSION['adminName'] = $account['staffName'];
-            $_SESSION['access_level'] = $account['access_level'];
-            header("location:../admin.php?message=loggedin");
-            exit();
-        }
+    if ($adminExists === false) {
+        header("location:../login.php?error=loginfailure");
+        exit();
+    }
+
+    $passHashed = $adminExists['adminPassword'];
+    $checkPass = password_verify($password, $passHashed);
+
+    if ($checkPass === false) {
+        header("location:../login.php?error=passfailure");
+        exit();
+    }
+    else if ($checkPass === true) {
+        session_start();
+        $_SESSION['adminName'] = $adminExists['adminName'];
+        header("location:../admin.php?message=loggedin");
+        exit();
     }
 }
 

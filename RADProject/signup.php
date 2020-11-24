@@ -92,3 +92,4 @@ if (isset($_GET['message'])) {
 <?php 
     include_once 'includes/footer.inc.php';
 ?>
+<a href="includes/templateEmail.inc.php?name"></a>
