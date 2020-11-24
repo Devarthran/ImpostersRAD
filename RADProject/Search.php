@@ -97,7 +97,6 @@ if (isset($_POST['btnSubmitSearch'])) {
                     if (!empty($year)) {
                         $query .= " AND Year = '". $year ."'";
                     }
-                    $query .= ' LIMIT 10';
                 // Resets search query and variables
                 } else if (isset($_POST['btnShowAll'])) {
                     $title = '';
