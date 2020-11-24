@@ -5,10 +5,7 @@
   padding: 1rem 0rem 1rem;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="button"],
-input[type="submit"] {
+.form-news-inputs {
   min-width: 300px;
   width: 50%;
   vertical-align: middle;

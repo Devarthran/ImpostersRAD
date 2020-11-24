@@ -13,13 +13,13 @@ if (isset($_POST['btnSubmitSearch'])) {
 
     <!-- Search Bar Form-->
     <div>
-        <form id="SearchForm" class="search-form" action="<?php echo basename($_SERVER['PHP_SELF']); ?>" method="POST">
+        <form id="searchForm" class="search-form" action="<?php echo basename($_SERVER['PHP_SELF']); ?>" method="POST">
                 <label id="lbltitle" for="title">Title: </label>
                 <input type="text" name="title" id="title" class="form-control" placeholder="Title"
                     aria-labelledby="lbltitle" value="<?php   
                     if (!empty($title)) { 
                         $title = stripslashes($title);
-                        echo $title; 
+                        echo $title;
                     } 
                     ?>">
                 <!-- Genre Select Box -->
@@ -38,8 +38,8 @@ if (isset($_POST['btnSubmitSearch'])) {
                         echo $year; 
                     } 
                     ?>">
-                <input class="search-button" name="btnSubmitSearch" type="submit" value="Search">
-                <input class="search-button" name="btnShowAll" type="submit" value="Show All">
+                <input name="btnSubmitSearch" type="submit" value="Search">
+                <input name="btnShowAll" type="submit" value="Show All">
         </form>
     </div>
     <!-- Movie Results Table from Database -->
@@ -59,21 +59,25 @@ if (isset($_POST['btnSubmitSearch'])) {
         <tbody>
             <?php
 
-                $conn = new mysqli("localhost", "root", "", "smt_db");
+            $conn = new mysqli("localhost", "root", "", "smt_db");
 
             if ($conn->connect_error) {
                 exit("Connection to the database failed.");
             }
             // Sets Base SQL query and variables
-            $query ="SELECT * FROM movies WHERE 1 = 1";
+            $query ="   SELECT * 
+                        FROM movies 
+                        WHERE 1 = 1
+                        LIMIT 50";
             $title = $genre = $rating = $year = '';
 
                 // If server has post request
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // If search has been pressed.
                 if (isset($_POST['btnSubmitSearch'])) {
-
-
+                    $query ="   SELECT * 
+                        FROM movies 
+                        WHERE 1 = 1";
 
                     $title = testInput($_POST['title']);
                     $genre = testInput($_POST['genre']);
@@ -93,6 +97,7 @@ if (isset($_POST['btnSubmitSearch'])) {
                     if (!empty($year)) {
                         $query .= " AND Year = '". $year ."'";
                     }
+                    $query .= ' LIMIT 10';
                 // Resets search query and variables
                 } else if (isset($_POST['btnShowAll'])) {
                     $title = '';
@@ -101,6 +106,13 @@ if (isset($_POST['btnSubmitSearch'])) {
                     $year = '';
 
                     $query = "SELECT * FROM movies WHERE 1 = 1";
+                } else {
+                    $title = '';
+                    $genre = '';
+                    $rating = '';
+                    $year = '';
+
+                    $query = "SELECT * FROM movies WHERE 1 = 1 LIMIT 10";
                 }
 
                     
@@ -135,18 +147,20 @@ if (isset($_POST['btnSubmitSearch'])) {
                     $col9 = $row['Genre'];
                     $col10 = $row['Aspect'];
 
-                    echo "  <tr>
-                                    <td>" . $col1 . "</td>
-                                    <td>" . $col2 . "</td>
-                                    <td>" . $col3 . "</td>
-                                    <td>" . $col4 . "</td>
-                                    <td>" . $col5 . "</td>
-                                    <td>" . $col6 . "</td>
-                                    <td>" . $col7 . "</td>
-                                    <td>" . $col8 . "</td>
-                                    <td>" . $col9 . "</td>
-                                    <td>" . $col10 . "</td>
-                                </tr>";
+                    echo <<< HTML
+                        <tr>
+                            <td>$col1</td>
+                            <td>$col2</td>
+                            <td>$col3</td>
+                            <td>$col4</td>
+                            <td>$col5</td>
+                            <td>$col6</td>
+                            <td>$col7</td>
+                            <td>$col8</td>
+                            <td>$col9</td>
+                            <td>$col10</td>
+                        </tr>
+                    HTML;
                 }
                 // Alert if database returned no results from query.
                 if (mysqli_num_rows($result) == 0) {

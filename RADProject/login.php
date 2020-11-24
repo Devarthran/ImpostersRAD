@@ -7,15 +7,15 @@
         <div class="login-form">
             <form  action="includes/login.inc.php" method="post">
                 <div>
-                <input type="email" name="email" placeholder="Email...">
+                <input class="login-form-input" type="email" name="email" placeholder="Email...">
                 </div>
 
                 <div>
-                <input type="password" name="password" placeholder="Password...">
+                <input class="login-form-input" type="password" name="password" placeholder="Password...">
                 </div>
                 
                 <div>
-                <input type="submit" name="loginbtn" value="Login">
+                <input class="login-form-input" type="submit" name="loginbtn" value="Login">
                 </div>
             </form>
         </div>

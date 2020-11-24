@@ -4,9 +4,7 @@
     padding: 1rem 0rem 1rem;
 }
 
-.login-form input[type='email'],
-    input[type='password'],
-    input[type='submit'] {
+.login-form-input {
     min-width: 300px;
     width: 50%;
     vertical-align: middle;
