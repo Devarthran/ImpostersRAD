@@ -1,15 +1,18 @@
 <?php 
     include_once 'includes/header.inc.php';
-    if (!isset($_SESSION['adminName'])) {
+    if (!isset($_SESSION['access_level'])) {
         header('location:index.php');
         exit();
+    } else {
+        $access_level = $_SESSION['access_level'];
     }
     require_once 'includes/dbh.inc.php';
+    
 ?>
 
-<section>
+<section id="tableSubscribers">
     <div>
-        <h1>Subscribers</h1>
+        <h2>Subscribers</h2>
         <table class="rtable">
             <thead>
                 <th>User ID</th>
@@ -21,21 +24,24 @@
                 <th>Delete?</th>
             </thead>
             <tbody>
-
-            
                 <?php include_once 'includes/admin_tools/userTable.inc.php'?>
             </tbody>
         </table>
     </div>
 </section>
 
+<?php 
+if ($access_level <= 1) {
+    include_once 'includes/admin_tools/staff_table.inc.php';
+}
+?>
 
 <?php 
     include_once 'includes/footer.inc.php';
 ?>
 <script type="text/javascript">
     $(document).ready(function(){
-        $("button").click(function()
+        $(".btnDelUser").click(function()
         {
             var id = this.id;
             if (confirm("Are you sure?")) {
@@ -49,6 +55,20 @@
                     }
                 });
             }
-        })
+        });
+        $('.btnDeleteStaff').click(function() {
+            var id = this.id;
+            if (confirm("Are you sure?")) {
+                $.ajax({
+                    url: 'includes/admin_tools/delStaff.inc.php',
+                    type: 'POST',
+                    data: { id: id},
+                    success: function(response) { 
+                        alert(response);
+                        location.reload();
+                    }
+                });
+            }
+        });
     })
 </script>
