@@ -39,49 +39,9 @@ function invalidEmail($email) {
     else { return false; }
 }
 
-function userExists($conn, $email) {
-    $sql = "SELECT * FROM users WHERE usersEmail = ?;";
-    $stmt = mysqli_stmt_init($conn);
 
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location:../signup.php?error=stmtfailure");
-        exit();
-    }
 
-    mysqli_stmt_bind_param($stmt, 's', $email);
-    mysqli_stmt_execute($stmt);
 
-    $result = mysqli_stmt_get_result($stmt);
-
-    if ($row = mysqli_fetch_assoc($result)) {
-        return $row;
-    }
-    else {
-        return false;
-    }
-
-    mysqli_stmt_close($stmt);
-}
-
-function createUser($conn, $name, $email, $newsletter, $notifications) {
-    $sql = "INSERT INTO users (usersName, usersEmail, usersNewsletter, usersNotifications, verify_code) 
-            VALUES (?, ?, ?, ?, ?);";
-    $stmt = mysqli_stmt_init($conn);
-
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location:../signup.php?error=stmtfailure");
-        exit();
-    }
-
-    $validationKey = password_hash($name.$email, PASSWORD_DEFAULT);
-
-    mysqli_stmt_bind_param($stmt, 'ssiis', $name, $email, $newsletter, $notifications, $validationKey);
-    mysqli_stmt_execute($stmt);
-
-    mysqli_stmt_close($stmt);
-    header("location:../signup-success.php");
-    exit();
-}
 
 function createAdmin($conn, $name, $email, $password) {
     $sql = "INSERT INTO admins (adminName, adminEmail, adminPassword) 
@@ -164,4 +124,62 @@ function sendNewsletter() {
     $subject = 'AE Monthly Newsletter';
     $message = '';
     
+}
+
+// Subs
+function userExists($conn, $email) {
+    $sql = "SELECT * FROM users WHERE usersEmail = ?;";
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location:../signup.php?error=stmtfailure");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, 's', $email);
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    if ($row = mysqli_fetch_assoc($result)) {
+        return $row;
+    }
+    else {
+        return false;
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
+function createUser($conn, $name, $email, $newsletter, $notifications) {
+    $sql = "INSERT INTO users (usersName, usersEmail, usersNewsletter, usersNotifications, verify_code) 
+            VALUES (?, ?, ?, ?, ?);";
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location:../signup.php?error=stmtfailure");
+        exit();
+    }
+
+    $validationKey = password_hash($name.$email, PASSWORD_DEFAULT);
+
+    mysqli_stmt_bind_param($stmt, 'ssiis', $name, $email, $newsletter, $notifications, $validationKey);
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+}
+
+function updateSub($conn, $email, $newsletter, $notifications) {
+    $sql = 'UPDATE users SET usersNewsletter = ?, usersNotifications = ? WHERE usersEmail = ?';
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, 'iis', $newsletter, $notifications, $email);
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+    return;
 }

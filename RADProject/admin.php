@@ -9,7 +9,7 @@
 
 <section>
     <div>
-        <h1>Users</h1>
+        <h1>Subscribers</h1>
         <table class="rtable">
             <thead>
                 <th>User ID</th>

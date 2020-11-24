@@ -21,7 +21,7 @@
                 <ul class="nav-links">
                     <li><a class="nav-link" href="Search.php">Search Movies</a></li>
                     <li><a class="nav-link" href="top10.php">Top 10 Movies</a></li>
-                    <li><a class="nav-link" href="signup.php">Sign-Up</a></li>
+                    <li><a class="nav-link" href="signup.php">Newsletter</a></li>
                     <?php 
                     if (isset($_SESSION['adminName'])) {
                         // 

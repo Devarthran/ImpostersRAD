@@ -121,6 +121,8 @@ $verifyKey = $_GET['verifyKey'];
                     <tr>
                       <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
+                        Test Email
+                        <br>
                         Hi there <?php if(isset($name)){echo $name;} ?>,</p>
                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
                         You recently requested to be removed from our mailing list. Please confirm on the button below.</p>

@@ -2,68 +2,73 @@
     include_once 'includes/header.inc.php';
 ?>
 
-<section>
-    <h2 class="signup-form-title">Sign Up</h2>
-    <div class="signup-form">
-        <form  action="includes/signup.inc.php" method="post">
-            <div>
-            <input type="text" name="fullName" placeholder="Full name...">
-            </div>
-            <div>
-            <input type="email" name="email" placeholder="Email...">
-            </div>
-            
-            <div>
-            <label for="newsletter">Sign Up for Monthly Newsletter?</label>
-            <input type="checkbox" name="newsletter" value='newsletter'>
-            </div>
+<h1>Newsletter & Notifications</h1>
 
+<!-- Signup Modal -->
+<input type="button" id='btnShowSignup' value="Sign-Up"></input>
+<section id="modalSignup" class="modal">
+    <div class="modal-content">
+        <span id="closeSignup" class="close">&times;</span>
+        <form id="formSignup" onsubmit="return validateSignup(this)">
+            <h2>Sign-Up</h2>
+            <p>Please enter your details.</p>
+            <div><input type="text" name="fullName" placeholder="Full name..."  required></div>
+            <div><input type="email" name="email" placeholder="Email..." required></div>
             <div>
-            <label for="notifications">Sign Up for Notifications?</label>
-            <input type="checkbox" name="notifications" value="notifications">
+                <label for="newsletter">Sign Up for Monthly Newsletter?</label>
+                <input type="checkbox" name="newsletter" value='0' onchange="if(this.checked) this.value='1'; else this.value='0';">
             </div>
-
             <div>
-            <input type="submit" name="signupbtn" value="Sign Up">
+                <label for="notifications">Sign Up for Notifications?</label>
+                <input type="checkbox" name="notifications" value='0' onchange="if(this.checked) this.value='1'; else this.value='0';">
             </div>
-
+            <div><input type="submit" name="btnSignup"></div>
+            <p id="messageSignup"></p>
         </form>
     </div>
-    <?php 
-    // Shows errors if an error is set in the global $_GET['error']
-    if (isset($_GET['error'])) {
-        if ($_GET['error'] == "emptyinput") {
-            echo "<p>Please fill in both your full name and email.</p>";
-        }
-
-        if ($_GET['error'] == "invalidemail") {
-            echo "<p>Please enter a valid email.</p>";
-        }
-
-        if ($_GET['error'] == "invalidselection") {
-            echo "<p>Please select newsletter and / or notifications.</p>";
-        }
-
-        if ($_GET['error'] == "emailtaken") {
-            echo "<p>That email is taken. Please enter another or contact admin.</p>";
-        }
-    }
-
-    ?>
 </section>
-<section>
-    <br><br><br>
-    <h2 class="signup-form-title">Unsubscribe</h2>
-    <div class="signup-form">
-        <form  action="includes/sendUnsub.inc.php" method="POST">
-            <div>
-            <input type="email" name="unsubEmail" placeholder="Email...">
-            </div>
-            
-            <div>
-            <input type="submit" name="btnUnsub" value="Unsubscribe">
-            </div>
 
+<!-- Update Details Modal -->
+<input type="button" id='btnShowUpdate' value="Update Details"></input>
+<section id="modalUpdate" class="modal">
+    <div class="modal-content">
+        <span id="closeUpdate" class="close">&times;</span>
+        <form id="formUpdate" onsubmit="return validateUpdate(this)">
+            <h2>Update Details</h2>
+            <p>Please enter your details and new preferences.</p>
+            <div><input type="text" name="fullName" placeholder="Full name..." required></div>
+            <div><input type="email" name="email" placeholder="Email..." required></div>
+            <div>
+                <label for="newsletter">Keep monthly newsletter?</label>
+                <input type="checkbox" name="newsletter" value="0" onchange="if(this.checked) this.value='1'; else this.value='0';">
+            </div>
+            <div>
+                <label for="notifications">Keep notifications?</label>
+                <input type="checkbox" name="notifications" value="0" onchange="if(this.checked) this.value='1'; else this.value='0';">
+            </div>
+            <div><input type="submit" name="btnUpdateDetails"></div>
+            <p id="messageUpdate"></p>
+        </form>
+    </div>
+</section>
+    
+<!-- Unsubscribe Modal -->
+<input type="button" id='btnShowUnsub' value="Unsubscribe"></input>
+<section id="modalUnsub" class="modal">
+    <div class="modal-content">
+        <!-- Unsub Section -->
+
+        <span id="closeUnsub" class="close">&times;</span>
+        <form id="formUnsub" onsubmit="return validateUnsub(this)">
+            <h1>Unsubscribe</h1>
+            <p>Please enter your details to unsubscribe.</p>
+            <div>
+                <input type="email" name="email" placeholder="Email..."  required>
+            </div>
+            <div>
+                <input type="submit" name="btnUnsub" value="Unsubscribe">
+            </div>
+            <p id="messageUnsub"></p>
         </form>
     </div>
 </section>
@@ -82,6 +87,9 @@ if (isset($_GET['message'])) {
         }
 }
 ?>
+<script type="text/javascript" src="js/signup.php.js"></script>
+
 <?php 
     include_once 'includes/footer.inc.php';
 ?>
+<a href="includes/templateEmail.inc.php?name"></a>

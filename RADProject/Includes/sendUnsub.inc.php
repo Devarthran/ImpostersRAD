@@ -3,35 +3,33 @@
 require_once 'dbh.inc.php';
 require_once 'functions.inc.php';
 
-if (isset($_POST['btnUnsub'])) {
+if (true) {
     
-    $email = $_POST['unsubEmail'];
-
+    $email = $_POST['email'];
+    
     if (empty($email) !== false) {
-        header("location:../signup.php");
+        echo 'Email is empty.';
         exit();
     }
     
     if (invalidEmail($email)) {
-        header("location:../signup.php");
+        echo 'Invalid Email.';
         exit();
     }
-
-    
 
     if ($user = userExists($conn, $email)) {
         $name = $user['usersName'];
         $verifyKey = $user['verify_code'];
-        header('location:templateEmail.inc.php?name='.$name.'&email='.$email.'&verifyKey='.$verifyKey);
+        echo '<a href="includes/templateEmail.inc.php?name='.$name.'&email='.$email.'&verifyKey='.$verifyKey.'">Test Unsub Mail</a>';
         exit();
     }
     else {
-        header("location:../signup.php?error=usernullexists");
+        echo 'User doesn\'t exist.';
         exit();
     }
 }
 else {
-    header("location:../signup.php");
+    echo 'failed';
     exit();
 }
 

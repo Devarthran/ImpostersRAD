@@ -1,39 +1,41 @@
 <?php 
 
-if (isset($_POST["signupbtn"])) {
+if (isset($_POST)) {
 
-    $name = $_POST["fullName"];
+    $name = $_POST["name"];
     $email = $_POST["email"];
-    $newsletter = (isset($_POST['newsletter'])) ? 1 : 0;
-    $notifications = (isset($_POST['notifications'])) ? 1 : 0;
+    $news = $_POST['news'] == '1' ? 1 : 0;
+    $notifs = $_POST['notifs'] == '1' ? 1 : 0;
 
     require_once 'dbh.inc.php';
     require_once 'functions.inc.php';
     
     if (emptyInputSignup($name, $email) !== false) {
-        header("location:../signup.php?error=emptyinput");
+        echo 'Name or Email is Empty';
         exit();
     }
 
     if ((invalidEmail($email) !== false) ) {
-        header("location:../signup.php?error=invalidemail");
+        echo 'Invalid Email';
         exit();
     }
     
-    if (selectionCheck($newsletter, $notifications) !== false) {
-        header("location:../signup.php?error=invalidselection");
+    if (selectionCheck($news, $notifs) !== false) {
+        echo 'Please tick at least one checkbox';
         exit();
     }
 
     if ((userExists($conn, $email) !== false) ) {
-        header("location:../signup.php?error=emailtaken");
+        echo 'Account exists';
         exit();
     }
 
-    createUser($conn, $name, $email, $newsletter, $notifications);
-
+    createUser($conn, $name, $email, $news, $notifs);
+    echo 'Account Created Successfully';
 }
 else {
     header("location:../signup.php");
     exit();
 }
+
+?>
