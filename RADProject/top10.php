@@ -1,55 +1,71 @@
-<?php 
-    include_once 'includes/header.inc.php';
-?>
+<?php include_once 'includes/header.inc.php';?>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<canvas id="top10Chart"></canvas>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<script>
+var ctx = document.getElementById('top10Chart').getContext('2d');
+var ratingsChart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'bar',
 
-<!-- Movie Chart-->
-<?php
+    // The data for our dataset
+    data: {
+        labels: titles,
+        datasets: [{
+            label: 'Stars',
+            backgroundColor: 'rgb(230, 168, 23)',
+            borderColor: 'rgb(255, 255, 255)',
+            data: ratings,
+        }]
+    },
 
-$conn = new mysqli("localhost", "root", "", "smt_db");
-
-if ($conn->connect_error) {
-    exit("Connection to the database failed.");
-}
-// Sets Base SQL query
-$query = "   SELECT * 
-                        FROM movies 
-                        WHERE num_searched > 0
-                        ORDER BY num_searched DESC
-                        LIMIT 10";
-
-// Prepares and executes the 
-$stmt = $conn->prepare($query);
-$stmt->execute();
-
-// If there was a result from the server, save it to variable.    
-if ($result = $stmt->get_result()) {
-
-    $movies = $stats = "";
-    // Whilst rows remain, print out details in table row.
-    while ($row = $result->fetch_assoc()) {
-        $movies .= $row['Title'] . ",";
-        $stats .= $row['num_searched'] . ",";
+    // Configuration options go here
+    options: {
+        legend: {
+            align: 'start',
+            position: 'top',
+            labels: {
+                fontSize: 20
+            }
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
     }
+});
+// empty variables
+var titles = [];
+var ratings = [];
 
-    $movies = rtrim($movies, ",");
-    $stats = rtrim($stats, ",");
+var getData = function() {
+    $.ajax({
+        type: 'GET',
+        url: 'Includes/chartData.inc.php',
+        dataType: 'json',
+        success: function(data) {
+            
+            ratingsChart.data.labels = data.titles;
+            ratingsChart.data.datasets[0].data = data.ratings;
+            // console.log(data.titles);
+            // ratingsChart.data.labels.push(data.titles);
+            // ratingsChart.data.datasets[0].data.push(data.ratings);
 
-    echo '<div class="container">
-        
-        <div class="chart">
-        <canvas id="top10Chart"></canvas>
-        </div>
-        </div>';
-
-    include('top10Chart.php');
+            ratingsChart.update();
+        },
+        error: function(xhr) {
+            console.log('ERROR BLOCK');
+            console.log(xhr.status + '' + xhr.statusText);
+        }
+    });
 }
 
-?>
+setInterval(getData, 3000);
+</script>
 
-
-<!-- Includes footer -->
 <?php 
     include_once 'includes/footer.inc.php';
 ?>

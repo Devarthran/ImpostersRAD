@@ -149,8 +149,11 @@ if (isset($_POST['btnSubmitSearch'])) {
                     $col8 = $row['Year'];
                     $col9 = $row['Genre'];
                     $col10 = $row['Aspect'];
+                    
+                    $rating = $row['movieAverage'];
 
-                    $rating = $row['movieAverage']; // get current average float.
+                    $ratingDisplay = number_format($row['movieAverage'], 2, '.', '') ; // get current average float.
+                    
 
                     echo <<< HTML
                         <tr>
@@ -171,7 +174,7 @@ if (isset($_POST['btnSubmitSearch'])) {
                                     <span style='display: inline-block' class='fa fa-star' role='img' aria-label='rating-star' title='3' data-index='3'></span>
                                     <span style='display: inline-block' class='fa fa-star' role='img' aria-label='rating-star' title='4' data-index='4'></span>
                                     <span style='display: inline-block' class='fa fa-star' role='img' aria-label='rating-star' title='5' data-index='5'></span>
-                                    <span>$rating</span>
+                                    <span>$ratingDisplay</span>
                                 </div>
                             </td>
                         </tr>
@@ -223,7 +226,7 @@ if (isset($_POST['btnSubmitSearch'])) {
                    rating: rating
                }, 
                success: function (response) {
-                    alert(response);
+                    console.log(response);
                }
             });
 

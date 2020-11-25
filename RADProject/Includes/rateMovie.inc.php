@@ -103,7 +103,6 @@ function updateRecord($conn,$ones, $twos, $threes, $fours, $fives, $movieID, $ra
 
     mysqli_stmt_bind_param($stmt, 'iiiiidi', $ones, $twos, $threes, $fours, $fives, $rating, $movieID);
     if (mysqli_stmt_execute($stmt)) {
-        echo 'success';
         mysqli_stmt_close($stmt);
         return;
     }
