@@ -23,34 +23,34 @@ CREATE TABLE `movies` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `movies` (`ID`, `Title`, `Studio`, `Status`, `Sound`, `Versions`, `RecRetPrice`, `Rating`, `Year`, `Genre`, `Aspect`, `oneStars`, `twoStars`, `threeStars`, `fourStars`, `fiveStars`, `movieAverage`) VALUES
-(1, '10', 'Warner Brothers', 'Out', '1.0', '4:3, LBX, 16:9', '19.98', 'R', 1979, 'Comedy', '2.35:1', 0, 0, 1, 1, 0, 3.5),
+(1, '10', 'Warner Brothers', 'Out', '1.0', '4:3, LBX, 16:9', '19.98', 'R', 1979, 'Comedy', '2.35:1', 0, 0, 2, 1, 0, 3.3333333333333335),
 (2, '12 Monkeys (DTS)', 'Universal', 'Out', 'DTS', 'LBX, 16:9', '34.98', 'R', 1995, 'SciFi', '1.85:1', 0, 0, 0, 0, 0, 1),
-(3, '12 Monkeys: Collector\'s Edition', 'Universal', 'Cancelled', '5.1', 'LBX, 16:9', '29.98', 'R', 1995, 'Drama', '1.85:1', 0, 0, 0, 0, 0, 0),
+(3, '12 Monkeys: Collector\'s Edition', 'Universal', 'Cancelled', '5.1', 'LBX, 16:9', '29.98', 'R', 1995, 'Drama', '1.85:1', 0, 0, 1, 1, 7, 4.666666666666667),
 (4, '187: Special Edition', 'Warner Brothers', 'Out', '5.1', 'LBX, 16:9', '24.98', 'R', 1997, 'Mystery  /  Suspense', '1.85:1', 0, 0, 0, 0, 0, 1),
 (5, '1941: Collector\'s Edition', 'Universal', 'Out', '5.1', 'LBX', '34.98', 'NR', 1979, 'Comedy', '2.35:1', 0, 0, 1, 0, 0, 3),
-(6, '200 Cigarettes', 'Paramount', 'Out', '5.1', 'LBX, 16:9', '29.99', 'R', 1999, 'Comedy', '1.85:1', 0, 0, 0, 0, 0, 0),
+(6, '200 Cigarettes', 'Paramount', 'Out', '5.1', 'LBX, 16:9', '29.99', 'R', 1999, 'Comedy', '1.85:1', 0, 0, 2, 1, 1, 3.75),
 (7, '2001: A Space Odyssey (Original Release)', 'MGM/UA', 'Dis-continued', '5.1', 'LBX', '24.98', 'NR', 1968, 'SciFi', '2.20:1', 0, 0, 1, 1, 0, 3.5),
-(8, '2001: A Space Odyssey (Repackaged Version)', 'Warner Brothers', 'Dis-continued', '5.1', 'LBX', '24.98', 'G', 1968, 'SciFi', '2.20:1', 0, 0, 0, 0, 0, 0),
+(8, '2001: A Space Odyssey (Repackaged Version)', 'Warner Brothers', 'Dis-continued', '5.1', 'LBX', '24.98', 'G', 1968, 'SciFi', '2.20:1', 0, 1, 1, 1, 3, 4),
 (9, '2010: The year We Made Contact', 'MGM/UA', 'Dis-continued', '5.1', 'LBX', '24.98', 'PG', 1984, 'SciFi', '2.35:1', 0, 0, 0, 0, 0, 3),
-(10, '3 Days Of The Condor', 'Paramount', 'Out', '5.1', 'LBX, 16:9', '29.99', 'R', 1975, 'Mystery / Suspense', '2.35:1', 0, 0, 0, 0, 0, 0),
-(11, '48 HRS.', 'Paramount', 'Out', '5.1', 'LBX', '29.99', 'R', 1983, 'Action / Adventure', '1.85:1', 1, 1, 1, 0, 1, 2.75),
+(10, '3 Days Of The Condor', 'Paramount', 'Out', '5.1', 'LBX, 16:9', '29.99', 'R', 1975, 'Mystery / Suspense', '2.35:1', 5, 0, 0, 0, 2, 2.142857142857143),
+(11, '48 HRS.', 'Paramount', 'Out', '5.1', 'LBX', '29.99', 'R', 1983, 'Action / Adventure', '1.85:1', 1, 1, 1, 0, 2, 3.2),
 (12, '8 Seconds', 'New Line', 'Out', '5.1', '4:3, LBX, 16:9', '24.98', 'PG-13', 1994, 'Action / Adventure', '1.85:1', 0, 0, 0, 0, 0, 0),
 (13, '9 1/2 Weeks', 'MGM/UA', 'Dis-continued', 'SUR', 'LBX', '24.98', 'NR', 1986, 'Drama', '1.66:1', 0, 0, 0, 0, 0, 0),
-(14, 'Above The Law', 'Warner Brothers', 'Out', '5.1', '4:3, LBX, 16:9', '19.98', 'R', 1988, 'Action / Adventure', '1.85:1', 0, 0, 1, 1, 0, 3.5),
+(14, 'Above The Law', 'Warner Brothers', 'Out', '5.1', '4:3, LBX, 16:9', '19.98', 'R', 1988, 'Action / Adventure', '1.85:1', 0, 0, 2, 1, 0, 3.3333333333333335),
 (15, 'Absolute Power', 'Warner Brothers', 'Out', '5.1', '4:3, LBX, 16:9', '24.99', 'R', 1997, 'Action / Adventure', '2.35:1', 0, 0, 0, 0, 0, 3),
-(16, 'Ace Ventura: Pet Detective', 'Warner Brothers', 'Out', '5.1', '4:3', '35.90', 'PG-13', 1994, 'Comedy', '1.33:1', 0, 0, 0, 0, 0, 0),
-(17, 'Ace Ventura: When Nature Calls', 'Warner Brothers', 'Out', '5.1', '4:3, LBX, 16:9', '55.55', 'PG-13', 1995, 'Comedy', '2.35:1', 0, 1, 1, 2, 1, 3.6),
+(16, 'Ace Ventura: Pet Detective', 'Warner Brothers', 'Out', '5.1', '4:3', '35.90', 'PG-13', 1994, 'Comedy', '1.33:1', 0, 0, 0, 0, 1, 5),
+(17, 'Ace Ventura: When Nature Calls', 'Warner Brothers', 'Out', '5.1', '4:3, LBX, 16:9', '55.55', 'PG-13', 1995, 'Comedy', '2.35:1', 0, 1, 2, 2, 1, 3.5),
 (18, 'Action Jackson', 'Warner Brothers', 'Out', '2.0', '4:3', '14.98', 'R', 1988, 'Action / Adventure', '1.33:1', 0, 0, 0, 0, 0, 0),
 (19, 'Action Pack Gift Set', 'Warner Brothers', 'Out', 'VAR', 'VAR', '99.92', 'VAR', 1973, 'Action / Adventure', 'VAR', 0, 0, 0, 0, 0, 2),
 (20, 'Adam Sandler Collection', 'Universal', 'Out', '5.1', '4:3, LBX', '64.98', 'VAR', 1975, 'Comedy', 'VAR', 0, 0, 0, 0, 0, 0),
 (21, 'Adam\'s Rib', 'MGM/UA', 'Dis-continued', '1.0', '4:3', '24.98', 'NR', 1949, 'Comedy', '1.33:1', 0, 0, 0, 0, 0, 0),
 (22, 'Addams Family', 'Paramount', 'Out', '5.1', 'LBX, 16:9', '29.99', 'PG-13', 1991, 'Comedy', '1.85:1', 0, 0, 0, 0, 0, 0),
-(23, 'Addams Family Values', 'Paramount', 'Out', '5.1', 'LBX, 16:9', '29.99', 'PG-13', 1993, 'Comedy', '1.85:1', 0, 0, 0, 0, 0, 4),
+(23, 'Addams Family Values', 'Paramount', 'Out', '5.1', 'LBX, 16:9', '29.99', 'PG-13', 1993, 'Comedy', '1.85:1', 0, 0, 1, 0, 0, 3),
 (24, 'Addicted to Love', 'Warner Brothers', 'Out', '5.1', '4:3, LBX, 16:9', '24.98', 'R', 1997, 'Comedy', '1.85:1', 0, 0, 0, 0, 0, 0),
-(25, 'Adventures Of Pinocchio', 'New Line', 'Out', '5.1', '4:3, LBX', '24.98', 'G', 1996, 'Family', '2.35:1', 0, 0, 0, 0, 0, 4),
+(25, 'Adventures Of Pinocchio', 'New Line', 'Out', '5.1', '4:3, LBX', '24.98', 'G', 1996, 'Family', '2.35:1', 0, 0, 1, 0, 0, 3),
 (26, 'Adventures Of Priscilla, Queen Of The Desert (MGM/UA)', 'MGM/UA', 'Out', 'SUR', 'LBX', '24.98', 'R', 1994, 'Comedy', '2.35:1', 0, 0, 0, 0, 0, 2),
 (27, 'Adventures Of Sebastian Cole', 'Paramount', 'Out', '5.1', 'LBX, 16:9', '29.99', 'R', 1999, 'Comedy', '1.85:1', 0, 0, 0, 0, 0, 0),
-(28, 'Affliction', 'Universal', 'Out', 'SUR', 'LBX', '29.98', 'R', 1998, 'Drama', '1.85:1', 0, 0, 0, 0, 0, 2),
+(28, 'Affliction', 'Universal', 'Out', 'SUR', 'LBX', '29.98', 'R', 1998, 'Drama', '1.85:1', 0, 0, 1, 0, 0, 3),
 (29, 'Al Pacino Collection', 'Universal', 'Out', '5.1', '4:3, LBX, 16:9', '94.98', 'R', 1970, 'VAR', 'VAR', 0, 0, 0, 0, 0, 0),
 (30, 'Alanis Morissette: Jagged Little Pill, Live', 'Warner Brothers', 'Out', 'SUR', '4:3', '24.98', 'NR', 1997, 'Music', '1.33:1', 0, 0, 0, 0, 0, 0),
 (31, 'Alfred Hitchcock Collection (Box Set)', 'Universal', 'Out', 'VAR', '4:3, LBX, 16:9', '74.98', 'VAR', 1972, 'Mystery / Suspense', 'VAR', 0, 0, 0, 0, 0, 0),
@@ -2348,7 +2348,7 @@ CREATE TABLE `staff` (
 
 INSERT INTO `staff` (`staffId`, `staffName`, `staffEmail`, `staffPassword`, `access_level`) VALUES
 (1, 'Admin', 'Admin@AE.com', '$2y$10$f769nbC2fH8SJKg.1bOebuk8zeOnouqzlY/orU/DWQ8fZIdAat/Mi', 1),
-(6, 'Dan', 'fake@mail.com', '$2y$10$lA9R6/pwkzI1tzpBhT4OaeTXLtFIFeYo5a6/Zt1VmDYEIFt8MKwS.', 2);
+(7, 'Test', 'Test@admin.ae.com', '$2y$10$FZfZQrfY6q.7sAVg1pIgeeEzuNRL2Oi/eKpytNe.im3wdvMS1KajS', 1);
 
 CREATE TABLE `users` (
   `usersId` int(11) NOT NULL,
@@ -2382,7 +2382,7 @@ ALTER TABLE `movies`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2299;
 
 ALTER TABLE `staff`
-  MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 ALTER TABLE `users`
   MODIFY `usersId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
