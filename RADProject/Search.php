@@ -43,7 +43,7 @@ if (isset($_POST['btnSubmitSearch'])) {
         </form>
     </div>
     <!-- Movie Results Table from Database -->
-    <table id="searchResults" class="table-results">
+    <table id="searchResults" class="rtable">
         <thead id="resultsHead">
             <th>Title</th>
             <th>Studio</th>
@@ -55,6 +55,7 @@ if (isset($_POST['btnSubmitSearch'])) {
             <th>Year</th>
             <th>Genre</th>
             <th>Aspect</th>
+            <th>Rating</th>
         </thead>
         <tbody>
             <?php
@@ -135,6 +136,9 @@ if (isset($_POST['btnSubmitSearch'])) {
                         $stmt->execute();
                         $title = testInput($title);
                     }
+
+                    $id = $row['ID'];
+
                     $col1 = $row['Title'];
                     $col2 = $row['Studio'];
                     $col3 = $row['Status'];
@@ -145,6 +149,8 @@ if (isset($_POST['btnSubmitSearch'])) {
                     $col8 = $row['Year'];
                     $col9 = $row['Genre'];
                     $col10 = $row['Aspect'];
+
+                    $rating = $row['movieAverage']; // get current average float.
 
                     echo <<< HTML
                         <tr>
@@ -158,6 +164,16 @@ if (isset($_POST['btnSubmitSearch'])) {
                             <td>$col8</td>
                             <td>$col9</td>
                             <td>$col10</td>
+                            <td>
+                                <div class='star-rating' data-id = $id data-rating='$rating'>
+                                    <span style='display: inline-block' class='fa fa-star' role='img' aria-label='rating-star' title='1' data-index='1'></span>
+                                    <span style='display: inline-block' class='fa fa-star' role='img' aria-label='rating-star' title='2' data-index='2'></span>
+                                    <span style='display: inline-block' class='fa fa-star' role='img' aria-label='rating-star' title='3' data-index='3'></span>
+                                    <span style='display: inline-block' class='fa fa-star' role='img' aria-label='rating-star' title='4' data-index='4'></span>
+                                    <span style='display: inline-block' class='fa fa-star' role='img' aria-label='rating-star' title='5' data-index='5'></span>
+                                    <span>$rating</span>
+                                </div>
+                            </td>
                         </tr>
                     HTML;
                 }
@@ -177,3 +193,71 @@ if (isset($_POST['btnSubmitSearch'])) {
     // include_once 'js/misc.js';
     include_once 'includes/footer.inc.php';
 ?>
+
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+
+    
+    // Once the page is loaded
+    $(document).ready(function() {
+
+        // Sets the star ratings of each movie
+        function refreshStars() {
+            $('.star-rating').each(function() {
+                resetStarRowColours(this);
+            });
+        }
+        refreshStars();
+
+        // onClick event for each star
+        $('.fa-star').on('click', function() {
+            id = $(this).parent().data('id');
+            rating = parseInt($(this).data('index'));
+            $.ajax({
+               url: "includes/rateMovie.inc.php",
+               method: "POST",
+               data: {
+                   id: id,
+                   rating: rating
+               }, 
+               success: function (response) {
+                    alert(response);
+               }
+            });
+
+        });
+
+        $('.fa-star').mouseover(function() {
+            var index = parseInt($(this).data('index'));
+            setStars(index, $(this).parent());
+        });
+
+        $('.fa-star').mouseleave(function(){
+            resetStarRowColours($(this).parent());
+        });
+
+    });
+
+    function setStars(max, parent) {
+        $(parent).children('span').each(function() {
+            if ($(this).data('index') <= max) {
+                $(this).css('color', 'gold');
+            }
+            if ($(this).data('index') > max) {
+                $(this).css('color', 'black');
+            }
+        });
+    }
+
+    function resetStarRowColours(parent) {
+        var rating = parseFloat($(parent).data('rating'));
+
+        if (rating == 0) {
+            $(parent).children('span[data-index]').css('color', 'black');
+        } else {
+            setStars(rating, parent);
+        }
+    }
+</script>
