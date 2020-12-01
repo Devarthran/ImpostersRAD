@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST)) {
+if (isset($_POST['id'])) {
     $movieID = $_POST['id'];
     $rating = $_POST['rating'];
     
@@ -43,6 +43,7 @@ if (isset($_POST)) {
         $newAverage = (double)$weighted / (double)$totalVotes;
 
         updateRecord($conn, $ones, $twos, $threes, $fours, $fives, $movieID, $newAverage);
+        echo number_format($newAverage, 2, '.', '');
     }
 
 } else {
@@ -108,4 +109,3 @@ function updateRecord($conn,$ones, $twos, $threes, $fours, $fives, $movieID, $ra
     }
     mysqli_stmt_close($stmt);
 }
-?>

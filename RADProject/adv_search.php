@@ -44,10 +44,15 @@ if (isset($_POST['btnSubmitSearch'])) {
 <table id="searchResults" class="rtable">
     <thead id="resultsHead">
         <th>Title</th>
+        <th>Studio</th>
         <th>Status</th>
+        <th>Sound</th>
+        <th>versions</th>
+        <th>Recommended Retail Price</th>
         <th>Rating</th>
         <th>Year</th>
         <th>Genre</th>
+        <th>Aspect</th>
         <th>Rating</th>
     </thead>
     <tbody>
@@ -118,10 +123,15 @@ if (isset($_POST['btnSubmitSearch'])) {
                 $id = $row['ID'];
 
                 $title = $row['Title'];
+                $studio = $row['Studio'];
                 $status = $row['Status'];
+                $sound = $row['Sound'];
+                $versions = $row['Versions'];
+                $recPrice = $row['RecRetPrice'];
                 $classification = $row['Rating'];
                 $year = $row['Year'];
                 $movieGenre = $row['Genre'];
+                $aspect = $row['Aspect'];
 
                 $rating = $row['movieAverage'];
 
@@ -131,10 +141,15 @@ if (isset($_POST['btnSubmitSearch'])) {
                 echo <<< HTML
                         <tr>
                             <td class='rtable-title'>$title</td>
+                            <td>$studio</td>
                             <td>$status</td>
+                            <td>$sound</td>
+                            <td>$versions</td>
+                            <td>$recPrice</td>
                             <td>$classification</td>
                             <td>$year</td>
                             <td>$movieGenre</td>
+                            <td>$aspect</td>
                             <td>
                                 <div class='star-rating' data-id = $id data-rating='$rating'>
                                     <span style='display: inline-block' class='fa fa-star' role='img' data-index='1'></span>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 if (isset($_POST['loginbtn'])) {
     $email = $_POST['email'];
@@ -13,8 +13,7 @@ if (isset($_POST['loginbtn'])) {
     }
 
     login($conn, $email, $password);
-}
-else {
+} else {
     echo 'Failed to log in.';
     exit();
 }

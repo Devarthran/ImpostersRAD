@@ -111,7 +111,7 @@
     var email = form.email.value;
 
     var data = {
-      email: email
+      email: email,
     };
 
     $.ajax({

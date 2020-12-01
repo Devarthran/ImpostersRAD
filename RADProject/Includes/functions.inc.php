@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-function testInput($data){
+function testInput($data)
+{
     $data = trim($data);
     // Stripping, then adding the slashes back in removes any double backslashes 
     // whilst adding them back in to not escape strings
@@ -11,43 +12,54 @@ function testInput($data){
 }
 
 // Signup Page Functions
-function selectionCheck($newsletter, $notifications) {
+function selectionCheck($newsletter, $notifications)
+{
     if ($newsletter == 0 && $notifications == 0) {
         return true;
+    } else {
+        return false;
     }
-    else { return false; }
 }
 
-function emptyInputSignup($name, $email) {
+function emptyInputSignup($name, $email)
+{
     if (empty($name) || empty($email)) {
         return true;
+    } else {
+        return false;
     }
-    else { return false; }
 }
 
-function emptyEmail($email) {
+function emptyEmail($email)
+{
     if (empty($email)) {
         return true;
+    } else {
+        return false;
     }
-    else { return false; }
 }
 
-function invalidEmail($email) {
+function invalidEmail($email)
+{
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         return true;
+    } else {
+        return false;
     }
-    else { return false; }
 }
 
 // Login Page Functions
-function emptyInputLogin($email, $password) {
+function emptyInputLogin($email, $password)
+{
     if (empty($email) || empty($password)) {
         return true;
+    } else {
+        return false;
     }
-    else { return false; }
 }
 
-function staffExists($conn, $email) {
+function staffExists($conn, $email)
+{
     $sql = "SELECT * FROM staff WHERE staffEmail = ?;";
     $stmt = mysqli_stmt_init($conn);
 
@@ -63,15 +75,15 @@ function staffExists($conn, $email) {
 
     if ($row = mysqli_fetch_assoc($result)) {
         return $row;
-    }
-    else {
+    } else {
         return false;
     }
 
     mysqli_stmt_close($stmt);
 }
 
-function login($conn, $email, $password) {
+function login($conn, $email, $password)
+{
     if (!($account = staffExists($conn, $email))) {
         echo 'Account doesn\'t exist.';
         exit();
@@ -82,8 +94,7 @@ function login($conn, $email, $password) {
         if ($checkPass === false) {
             echo 'Password failed.';
             exit();
-        }
-        else if ($checkPass === true) {
+        } else if ($checkPass === true) {
             session_start();
             $_SESSION['adminName'] = $account['staffName'];
             $_SESSION['access_level'] = $account['access_level'];
@@ -94,14 +105,15 @@ function login($conn, $email, $password) {
 }
 
 // Email
-function sendNewsletter() {
+function sendNewsletter()
+{
     $subject = 'AE Monthly Newsletter';
     $message = '';
-    
 }
 
 // Subs
-function userExists($conn, $email) {
+function userExists($conn, $email)
+{
     $sql = "SELECT * FROM users WHERE usersEmail = ?;";
     $stmt = mysqli_stmt_init($conn);
 
@@ -117,15 +129,15 @@ function userExists($conn, $email) {
 
     if ($row = mysqli_fetch_assoc($result)) {
         return $row;
-    }
-    else {
+    } else {
         return false;
     }
 
     mysqli_stmt_close($stmt);
 }
 
-function createUser($conn, $name, $email, $newsletter, $notifications) {
+function createUser($conn, $name, $email, $newsletter, $notifications)
+{
     $sql = "INSERT INTO users (usersName, usersEmail, usersNewsletter, usersNotifications, verify_code) 
             VALUES (?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
@@ -135,7 +147,7 @@ function createUser($conn, $name, $email, $newsletter, $notifications) {
         exit();
     }
 
-    $validationKey = password_hash($name.$email, PASSWORD_DEFAULT);
+    $validationKey = password_hash($name . $email, PASSWORD_DEFAULT);
 
     mysqli_stmt_bind_param($stmt, 'ssiis', $name, $email, $newsletter, $notifications, $validationKey);
     mysqli_stmt_execute($stmt);
@@ -143,7 +155,8 @@ function createUser($conn, $name, $email, $newsletter, $notifications) {
     mysqli_stmt_close($stmt);
 }
 
-function updateSub($conn, $email, $newsletter, $notifications) {
+function updateSub($conn, $email, $newsletter, $notifications)
+{
     $sql = 'UPDATE users SET usersNewsletter = ?, usersNotifications = ? WHERE usersEmail = ?';
     $stmt = mysqli_stmt_init($conn);
 

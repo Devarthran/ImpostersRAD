@@ -37,5 +37,3 @@ else {
     header("location:../signup.php");
     exit();
 }
-
-?>

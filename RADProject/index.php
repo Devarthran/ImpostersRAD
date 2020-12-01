@@ -1,13 +1,16 @@
-<?php 
-    include_once 'includes/header.inc.php';
+<!-- Includes Header -->
+<?php
+include_once 'includes/header.inc.php';
 ?>
 
+<!-- Generic Welcome -->
 <h1>Welcome to Acme Entertainment</h1>
+<!-- Landing Page content for Client to fill -->
 <p>
-    <br>
     Client can fill articles / announcements here
 </p>
 
-<?php 
-    include_once 'includes/footer.inc.php';
+<!-- Includes Footer -->
+<?php
+include_once 'includes/footer.inc.php';
 ?>

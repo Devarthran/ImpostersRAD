@@ -20,10 +20,9 @@
       data: data,
       success: function (response) {
         document.getElementById("messageStaff").innerHTML = response;
-        setTimeout(function(){
+        setTimeout(function () {
           location.reload();
-        },5000);
-        
+        }, 5000);
       },
       error: function () {
         alert("An error occured");

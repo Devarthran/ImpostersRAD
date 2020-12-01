@@ -23,4 +23,3 @@ else {
     header('location:../signup.php?error=unsubfailed');
     exit();
 }
-?>
