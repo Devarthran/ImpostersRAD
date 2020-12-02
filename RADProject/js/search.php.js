@@ -21,7 +21,6 @@ $(document).ready(function () {
         rating: rating,
       },
       success: function (response) {
-        console.log(response);
         $star.parent().children('span[id="rating"]').text(response);
         $star.parent().data("rating", response);
         refreshStars();

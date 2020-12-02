@@ -53,7 +53,6 @@ if (isset($_POST['btnSubmitSearch'])) {
         <th>Year</th>
         <th>Genre</th>
         <th>Aspect</th>
-        <th>Rating</th>
     </thead>
     <tbody>
         <?php
@@ -135,7 +134,6 @@ if (isset($_POST['btnSubmitSearch'])) {
 
                 $rating = $row['movieAverage'];
 
-                $ratingDisplay = number_format($row['movieAverage'], 2, '.', ''); // get current average float.
 
 
                 echo <<< HTML
@@ -150,16 +148,6 @@ if (isset($_POST['btnSubmitSearch'])) {
                             <td>$year</td>
                             <td>$movieGenre</td>
                             <td>$aspect</td>
-                            <td>
-                                <div class='star-rating' data-id = $id data-rating='$rating'>
-                                    <span style='display: inline-block' class='fa fa-star' role='img' data-index='1'></span>
-                                    <span style='display: inline-block' class='fa fa-star' role='img' data-index='2'></span>
-                                    <span style='display: inline-block' class='fa fa-star' role='img' data-index='3'></span>
-                                    <span style='display: inline-block' class='fa fa-star' role='img' data-index='4'></span>
-                                    <span style='display: inline-block' class='fa fa-star' role='img' data-index='5'></span>
-                                    <span id='rating'>$ratingDisplay</span>
-                                </div>
-                            </td>
                         </tr>
                     HTML;
             }
@@ -180,4 +168,3 @@ if (isset($_POST['btnSubmitSearch'])) {
 include_once 'includes/footer.inc.php';
 ?>
 <script type="text/javascript" src="js/misc.js"></script>
-<script type="text/javascript" src="js/search.php.js"></script>

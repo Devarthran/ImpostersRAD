@@ -12,15 +12,15 @@ include_once 'includes/header.inc.php';
         <form id="formSignup" onsubmit="return validateSignup(this)">
             <h2>Sign-Up Form</h2>
             <p>Please enter your details.</p>
-            <div><input class="form-news-inputs" type="text" name="fullName" placeholder="Full name..." required aria-label=""></div>
-            <div><input class="form-news-inputs" type="email" name="email" placeholder="Email..." required aria-label=""></div>
+            <div><input class="form-news-inputs" type="text" name="fullName" placeholder="Full name..." required aria-label="Enter your full name here."></div>
+            <div><input class="form-news-inputs" type="email" name="email" placeholder="Email..." required aria-label="Enter email address here."></div>
             <div>
-                <label for="newsletter">Sign Up for Monthly Newsletter?</label>
-                <input type="checkbox" name="newsletter" value='0' onchange="if(this.checked) this.value='1'; else this.value='0';" aria-label="">
+                <label id="lblNews" for="newsletter">Sign Up for Monthly Newsletter?</label>
+                <input type="checkbox" id="newsletter" name="newsletter" value='0' onchange="if(this.checked) this.value='1'; else this.value='0';" aria-labelledby="lblNews">
             </div>
             <div>
-                <label for="notifications">Sign Up for Notifications?</label>
-                <input type="checkbox" name="notifications" value='0' onchange="if(this.checked) this.value='1'; else this.value='0';" aria-label="">
+                <label id="lblNotifs" for="notifications">Sign Up for Notifications?</label>
+                <input type="checkbox" id="notifications" name="notifications" value='0' onchange="if(this.checked) this.value='1'; else this.value='0';" aria-labelledby="lblNotifs">
             </div>
             <div><input class="form-news-inputs" type="submit" name="btnSignup"></div>
             <p id="messageSignup"></p>
@@ -36,15 +36,15 @@ include_once 'includes/header.inc.php';
         <form id="formUpdate" onsubmit="return validateUpdate(this)">
             <h2>Update Details Form</h2>
             <p>Please enter your details and new preferences.</p>
-            <div><input class="form-news-inputs" type="text" name="fullName" placeholder="Full name..." required aria-label=""></div>
-            <div><input class="form-news-inputs" type="email" name="email" placeholder="Email..." required aria-label=""></div>
+            <div><input class="form-news-inputs" type="text" name="fullName" placeholder="Full name..." required aria-label="Enter your full name here."></div>
+            <div><input class="form-news-inputs" type="email" name="email" placeholder="Email..." required aria-label="Enter email address here."></div>
             <div>
-                <label for="newsletter">Keep monthly newsletter?</label>
-                <input type="checkbox" name="newsletter" value="0" onchange="if(this.checked) this.value='1'; else this.value='0';" aria-label="">
+                <label id="lblNews" for="newsletter">Keep monthly newsletter?</label>
+                <input type="checkbox" id="newsletter" name="newsletter" value="0" onchange="if(this.checked) this.value='1'; else this.value='0';" aria-labelledby="lblNews">
             </div>
             <div>
-                <label for="notifications">Keep notifications?</label>
-                <input type="checkbox" name="notifications" value="0" onchange="if(this.checked) this.value='1'; else this.value='0';" aria-label="">
+                <label id="lblNotifs" for="notifications">Keep notifications?</label>
+                <input type="checkbox" id="notifications" name="notifications" value="0" onchange="if(this.checked) this.value='1'; else this.value='0';" aria-labelledby="lblNotifs">
             </div>
             <div><input type="submit" name="btnUpdateDetails"></div>
             <p id="messageUpdate"></p>
@@ -62,7 +62,7 @@ include_once 'includes/header.inc.php';
             <h1>Unsubscribe Form</h1>
             <p>Please enter your details to unsubscribe.</p>
             <div>
-                <input class="form-news-inputs" type="email" name="email" placeholder="Email..." required aria-label="">
+                <input class="form-news-inputs" type="email" name="email" placeholder="Email..." required aria-label="Enter email address here.">
             </div>
             <div>
                 <input class="form-news-inputs" type="submit" name="btnUnsub" value="Unsubscribe">

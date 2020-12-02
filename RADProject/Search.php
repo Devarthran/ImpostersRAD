@@ -27,7 +27,7 @@ if (isset($_POST['btnSubmitSearch'])) {
             <?php require_once "genre_scr.php"; ?>
         </Select>
         <label id="lblrating" for="rating">Rating: </label>
-        <Select name="rating" id="rating" aria-labelledby="lblgenre">
+        <Select name="rating" id="rating" aria-labelledby="lblrating">
             <?php require_once "rating_scr.php"; ?>
         </Select>
         <label id="lblyear" for="year">Year: </label>
@@ -106,7 +106,7 @@ if (isset($_POST['btnSubmitSearch'])) {
                 $rating = '';
                 $year = '';
 
-                $query = "SELECT * FROM movies WHERE 1 = 1 LIMIT 10";
+                $query = "SELECT * FROM movies WHERE 1 = 1 LIMIT 50";
             }
         }
         $stmt = $conn->prepare($query);
