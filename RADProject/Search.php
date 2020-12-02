@@ -1,6 +1,6 @@
 <?php
-
-include_once 'includes/header.inc.php';
+// includes header and php functions file.
+require_once 'includes/header.inc.php';
 require_once 'includes/functions.inc.php';
 // Sets the search variables if the page has been posted.
 if (isset($_POST['btnSubmitSearch'])) {
