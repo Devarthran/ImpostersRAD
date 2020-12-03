@@ -1,16 +1,19 @@
 <?php
+// Includes header and Navbar
 include_once 'includes/header.inc.php';
+// Checks that the session variable for access has been set,
+// if false, return user to index page
 if (!isset($_SESSION['access_level'])) {
     header('location:index.php');
     exit();
 } else {
     $access_level = $_SESSION['access_level'];
 }
+// Requires the Database handler file.
 require_once 'includes/dbh.inc.php';
 
 ?>
-
-<section id="tableSubscribers">
+<section id="tableSubscribers"><!-- Table for subscribers of the newsletter -->
     <div>
         <h2>Subscribers</h2>
         <table class="rtable">
@@ -31,17 +34,18 @@ require_once 'includes/dbh.inc.php';
 </section>
 
 <?php
+// Checks access level and if high enough, shows the staff table for staff creation / deletion.
 if ($access_level <= 1) {
     include_once 'includes/admin_tools/staff_table.inc.php';
 }
 ?>
-
+<!-- Includes Footer bar -->
 <?php
 include_once 'includes/footer.inc.php';
 ?>
 <script type="text/javascript">
     $(document).ready(function() {
-        $(".btnDelUser").click(function() {
+        $(".btnDelUser").click(function() { /* Delete subscriber onclick function to delete sub from database */
             var id = this.id;
             if (confirm("Are you sure?")) {
                 $.ajax({
@@ -57,7 +61,7 @@ include_once 'includes/footer.inc.php';
                 });
             }
         });
-        $('.btnDeleteStaff').click(function() {
+        $('.btnDeleteStaff').click(function() { /* Delete staff member onclick function to delete staff from database */
             var id = this.id;
             if (confirm("Are you sure?")) {
                 $.ajax({

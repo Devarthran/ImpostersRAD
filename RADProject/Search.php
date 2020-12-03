@@ -2,7 +2,7 @@
 // includes header and php functions file.
 require_once 'includes/header.inc.php';
 require_once 'includes/functions.inc.php';
-// Sets the search variables if the page has been posted.
+// Sets the search form variables if the page has been posted.
 if (isset($_POST['btnSubmitSearch'])) {
     $title = testInput($_POST['title']);
     $genre = testInput($_POST['genre']);
@@ -11,31 +11,36 @@ if (isset($_POST['btnSubmitSearch'])) {
 }
 ?>
 
-<!-- Search Bar Form-->
+<!-- Search Bar Form -->
 <div>
     <form id="searchForm" class="search-form" action="<?php echo basename($_SERVER['PHP_SELF']); ?>" method="POST">
+        <!-- Movie Title Input Box -->
         <label id="lbltitle" for="title">Title: </label>
         <input type="text" name="title" id="title" class="form-control" placeholder="Title" aria-labelledby="lbltitle" value="<?php
                                                                                                                                 if (!empty($title)) {
                                                                                                                                     $title = stripslashes($title);
                                                                                                                                     echo $title;
                                                                                                                                 }
-                                                                                                                                ?>">
+                                                                                                                                ?>"> <!-- sets the value of the input if the $title variable !empty -->
         <!-- Genre Select Box -->
         <label id="lblgenre" for="genre">Genre: </label>
         <Select name="genre" id="genre" aria-labelledby="lblgenre">
+            <!-- Populates Genre box with column from database -->
             <?php require_once "genre_scr.php"; ?>
         </Select>
+        <!-- Rating Select Box -->
         <label id="lblrating" for="rating">Rating: </label>
         <Select name="rating" id="rating" aria-labelledby="lblrating">
+            <!-- Populates Rating box with column from database -->
             <?php require_once "rating_scr.php"; ?>
         </Select>
+        <!-- Year Input Box -->
         <label id="lblyear" for="year">Year: </label>
         <input type="text" name="year" id="year" pattern="([0-9]{4})|^ +$" placeholder="Year" aria-labelledby="lblyear" value="<?php
                                                                                                                                 if (!empty($year)) {
                                                                                                                                     echo $year;
                                                                                                                                 }
-                                                                                                                                ?>">
+                                                                                                                                ?>"> <!-- sets the value of the input if the $year variable !empty -->
         <input name="btnSubmitSearch" type="submit" value="Search">
         <input name="btnShowAll" type="submit" value="Show All">
     </form>
@@ -52,7 +57,8 @@ if (isset($_POST['btnSubmitSearch'])) {
     </thead>
     <tbody>
         <?php
-
+        // This PHP script fetches the movies from database based on search criteria,
+        // and populates the table by echoing out rows with each movies data
         $conn = new mysqli("localhost", "root", "", "smt_db");
 
         if ($conn->connect_error) {
@@ -127,7 +133,7 @@ if (isset($_POST['btnSubmitSearch'])) {
 
                 $ratingDisplay = number_format($row['movieAverage'], 2, '.', ''); // get current average float.
 
-
+                // Bulk HTML echo to create more readable code.
                 echo <<< HTML
                         <tr scope='row'>
                             <td class='rtable-title'>$title</td>
@@ -148,7 +154,7 @@ if (isset($_POST['btnSubmitSearch'])) {
                         </tr>
                     HTML;
             }
-            // Alert if database returned no results from query.
+            // Alert user if database returned no results from query.
             if (mysqli_num_rows($result) == 0) {
                 echo "<script type='text/javascript'>";
                 echo "alert('Sorry, that movie doesn\'t appear in our catalogue.')";
@@ -157,12 +163,12 @@ if (isset($_POST['btnSubmitSearch'])) {
         }
         ?>
     </tbody>
-</table>
+</table> <!-- End of Table -->
 
 <!-- Includes footer -->
 <?php
-// include_once 'js/misc.js';
 include_once 'includes/footer.inc.php';
 ?>
+<!-- Scripts for refreshing form page and implementing search form JS -->
 <script type="text/javascript" src="js/misc.js"></script>
 <script type="text/javascript" src="js/search.php.js"></script>

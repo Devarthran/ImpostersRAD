@@ -1,12 +1,12 @@
-<?php
+<?php // Includes header File
 include_once 'includes/header.inc.php';
 ?>
 
 <h1>Newsletter & Notifications</h1>
 
 <!-- Signup Modal -->
-<input class="form-news-inputs" type="button" id='btnShowSignup' value="Sign-Up"></input>
-<section id="modalSignup" class="modal">
+<input class="form-news-inputs" type="button" id='btnShowSignup' value="Sign-Up"></input> <!-- Button to show this Popup -->
+<section id="modalSignup" class="modal"> <!-- Beginning of Singup form popup -->
     <div class="modal-content">
         <button id="closeSignup" class="close" aria-label="Close">&times;</button>
         <form id="formSignup" onsubmit="return validateSignup(this)">
@@ -29,8 +29,8 @@ include_once 'includes/header.inc.php';
 </section>
 
 <!-- Update Details Modal -->
-<input class="form-news-inputs" type="button" id='btnShowUpdate' value="Update Details"></input>
-<section id="modalUpdate" class="modal">
+<input class="form-news-inputs" type="button" id='btnShowUpdate' value="Update Details"></input> <!-- Button to show this Popup -->
+<section id="modalUpdate" class="modal"> <!-- Beginning of Update form popup -->
     <div class="modal-content">
         <button id="closeUpdate" class="close" aria-label="Close">&times;</button>
         <form id="formUpdate" onsubmit="return validateUpdate(this)">
@@ -53,10 +53,9 @@ include_once 'includes/header.inc.php';
 </section>
 
 <!-- Unsubscribe Modal -->
-<input class="form-news-inputs" type="button" id='btnShowUnsub' value="Unsubscribe"></input>
-<section id="modalUnsub" class="modal">
-    <div class="modal-content">
-        <!-- Unsub Section -->
+<input class="form-news-inputs" type="button" id='btnShowUnsub' value="Unsubscribe"></input> <!-- Button to show this Popup -->
+<section id="modalUnsub" class="modal"> <!-- Beginning of Unsubscribe form popup -->
+    <div class="modal-content"> <!-- Unsub Section -->
         <button id="closeUnsub" class="close" aria-label="Close">&times;</button>
         <form id="formUnsub" onsubmit="return validateUnsub(this)">
             <h1>Unsubscribe Form</h1>
@@ -72,6 +71,7 @@ include_once 'includes/header.inc.php';
     </div>
 </section>
 <?php
+// Error reporting using GET variables
 if (isset($_GET['error'])) {
     if ($_GET['error'] == "unsubfailed") {
         echo "<p>Unsubscribing failed, please contact administration at support@AE.admin.com</p>";
@@ -86,8 +86,10 @@ if (isset($_GET['message'])) {
     }
 }
 ?>
+<!-- Signup page JS -->
 <script type="text/javascript" src="js/signup.php.js"></script>
 
+<!-- Includes footer -->
 <?php
 include_once 'includes/footer.inc.php';
 ?>

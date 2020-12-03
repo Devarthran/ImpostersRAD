@@ -1,4 +1,6 @@
+<!-- Includes Header and Nav bar -->
 <?php include_once 'includes/header.inc.php'; ?>
+<!-- Script for chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 <canvas id="top10Chart" title="Top 10 chart of highest ranked movies"></canvas>
@@ -42,6 +44,7 @@
     var titles = [];
     var ratings = [];
 
+    // Fetches data from database and refreshes chart with new data
     function getData() {
         $.ajax({
             type: 'GET',
@@ -63,12 +66,10 @@
             }
         });
     }
-
-
-
+    // Repeats the getData() function each elapsed time (1500ms in this case)
     setInterval(i => getData(), 1500);
 </script>
-
+<!-- Includes Footer -->
 <?php
 include_once 'includes/footer.inc.php';
 ?>
