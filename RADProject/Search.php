@@ -41,14 +41,14 @@ if (isset($_POST['btnSubmitSearch'])) {
     </form>
 </div>
 <!-- Movie Results Table from Database -->
-<table id="searchResults" class="rtable">
+<table id="searchResults" class="rtable" tabindex='1'>
     <thead id="resultsHead">
-        <th>Title</th>
-        <th>Status</th>
-        <th>Rating</th>
-        <th>Year</th>
-        <th>Genre</th>
-        <th>Rating</th>
+        <th scope='col'>Title</th>
+        <th scope='col'>Status</th>
+        <th scope='col'>Rating</th>
+        <th scope='col'>Year</th>
+        <th scope='col'>Genre</th>
+        <th scope='col'>Rating</th>
     </thead>
     <tbody>
         <?php
@@ -129,7 +129,7 @@ if (isset($_POST['btnSubmitSearch'])) {
 
 
                 echo <<< HTML
-                        <tr>
+                        <tr scope='row'>
                             <td class='rtable-title'>$title</td>
                             <td>$status</td>
                             <td>$classification</td>

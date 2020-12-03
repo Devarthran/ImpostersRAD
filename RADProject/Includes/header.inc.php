@@ -21,7 +21,7 @@ session_start();
 <body>
     <!-- Main Navigation bar -->
     <div class="master-nav-wrapper">
-        <nav class="master-nav">
+        <nav class="master-nav" tabindex='0'>
             <a class="brand" href="index.php" aria-label="Acme Entertainment">AE</a>
             <!-- Nav links to site pages. -->
             <ul class="nav-links">
